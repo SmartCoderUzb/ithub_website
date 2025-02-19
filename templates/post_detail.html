@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+    <style>
+        .post{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        .post-header {
+            display: flex;
+            align-items: center;
+            justify-content: left;
+            gap: 20px;
+            height: auto;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+        
+        .post-header h2, .post-header p{
+            text-align: left;
+        }
+
+        .post-header.dark h2,
+        .post-header.dark p {
+            color: #fff;
+        }
+
+        .post-header img {
+            height: 150px;
+            width: auto;
+            border-radius: 8px;
+        }
+
+        .post-body {
+            text-align: left;
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .post-body.dark {
+            color: #fff;
+        }
+
+        @media (max-width: 768px) {
+            *{
+                max-width: 100%;
+            }
+            body{
+                width:100vw;
+            }
+            .post-header {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                width:100%;
+            }
+
+            .post-header img {
+                width: 100%;
+                height: 500px;
+                /* max-height: 200px; */
+            }
+
+            .title {
+                text-align: center;
+            }
+
+            .post-body {
+                padding: 15px;
+                width:200vw;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .post-header h2{
+                margin: 20px 0;
+            }
+            .post-header {
+                gap: 10px;
+                padding: 10px;
+            }
+
+            .post-header img {
+                max-height: 250px;
+            }
+
+            .post-body {
+                padding: 10px;
+                font-size: 14px;
+                line-height: 1.5;
+            }
+        }
+</style>
+    <div class="post">
+        <div class="post-header dark">
+            <img src="{{ post.image.url }}" alt="">
+            <div class="title">
+                <h2>{{ post.title }}</h2>
+                <p>{{ post.summary }}</p>
+            </div>
+        </div>
+        <div class="post-body dark">
+            {{ post.body|safe }}
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const darkModeIcon = document.querySelector(".bi-moon");
+            const lightModeIcon = document.querySelector(".bi-brightness-high");
+
+            const post_header = document.querySelector(".post-header");
+            const post_body = document.querySelector(".post-body")
+
+            function enableLightMode() {
+                post_header.classList.remove("dark")
+                post_body.classList.remove("dark")
+            }
+
+            function enableDarkMode() {
+                post_header.classList.add("dark")
+                post_body.classList.add("dark")
+            }
+            lightModeIcon.parentElement.addEventListener("click", enableLightMode);
+            darkModeIcon.parentElement.addEventListener("click", enableDarkMode);
+        });
+    </script>
+{% endblock content %}

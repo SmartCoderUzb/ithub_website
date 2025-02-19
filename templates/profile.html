@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <style>
+        .profile{
+            display: flex;
+            height:100%;
+            color: #fff;
+            z-index: -1;
+        }
+        .profile .left{
+            width:20%;
+        }
+        .profile .right{
+            flex-grow: 1;
+        }
+        .profile .right .header{
+            border:none;
+            display: flex;
+            align-items: end;
+            justify-content: space-around;
+            height: 300px;
+            flex-direction: column;
+            background-color: #26293b;
+            border-radius: 8px;
+            padding:20px;
+            margin:20px;
+        }
+
+        .profile .right .header img{
+            width:100%;
+            height: 100%;
+            border-radius: 50%;
+        }
+        .profile .right .data .part{
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            height: 200px;
+        }
+        .profile .right .data{
+            background-color: #26293b;
+            border-radius: 8px;
+            padding:20px;
+            margin:20px;
+        }
+        .profile .header .img{
+            width:100px;
+            height:100px;
+            border:10px solid white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+            margin:20px;
+        }
+        .sertificates{
+            background-color: #26293b;
+            padding:20px;
+            margin:20px;
+            border-radius: 8px;
+            height: 250px;
+            display: flex;
+            /* align-items: center; */
+            border-radius: 8px;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .sertificates img{
+            height: 100%;
+            border-radius: 8px;
+        }
+    </style>
+    <div class="profile">
+        <!-- <div class="left">left</div> -->
+        <div class="right">
+            <div class="header">
+                <div class="img">
+                    {% if user.image %}
+                        <img src="{{ user.image.url }}" alt="mavjud emas">
+                    {% else %}
+                        <!-- <p>{{ user.ism.0 }}</p> -->
+                        <img src="/static/img/post.jpg" alt="mavjud emas">
+                    {% endif %}
+                </div>
+                <h2>Fayzullo Asqarov</h2>
+                <button>Ma'lumotlarni o'zgartirish</button>
+            </div>
+            <div class="data">
+                <div class="part">
+                    <p>+998 95 257 67 67</p>
+                    <p>asqarov.dev@gmail.com</p>
+                </div>
+            </div>
+            <div class="sertificates">
+                <img src="{{ user.course_enrolls.all.0.course.image.url }}" alt="">
+            </div>
+        </div>
+    </div>
+{% endblock content %}

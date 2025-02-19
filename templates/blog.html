@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+    <style>
+        .post{
+            display: flex;
+            align-items: center;
+            list-style: none;
+            height: 180px;
+            justify-content: left;
+            gap:30px;
+            border: 1px solid #fff;
+            border-radius: 12px;
+            padding:20px;
+            margin:20px 0;
+            position: relative;
+        }
+        .post a{
+            display: flex;
+            align-items: center;
+            justify-content: left;
+            gap:30px;
+            height: 100%;
+            width:100%;
+        }
+        .post img{
+            height: 100%;
+            border-radius: 8px;
+        }
+
+        .posts-list .post a{
+            color:#333;
+            text-decoration: none;
+        }
+        .posts-list.dark .post a{
+            color:#fff;
+        }
+        .post .details{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width:150px;
+            position: absolute;
+            bottom:0;
+            right:0;
+            padding:5px 10px;
+            color:#333;
+        }
+        .posts-list.dark .post .details{
+            color:#fff;
+        }
+        @media (max-width: 768px){
+            .header{
+                z-index: 9999;
+            }
+            .post a{
+                flex-direction: column;
+                height: unset;
+            }
+            .post{
+                height: unset;
+            }
+            .post a img{
+                width:100%;
+                height: auto;
+            }
+            .post a .details{
+                position: relative;
+            }
+            .post img{
+                z-index: -1;
+            }
+            .posts-list{
+                z-index: -1;
+            }
+        }
+    </style>
+    <ul class="posts-list dark">
+        {% for post in posts %}
+            <li class="post">
+                <a href="{% url 'post-detail' post.id %}">
+                    <img src="{{ post.image.url }}" alt="{{ post.title }}">
+                    {{ post.title }}
+                    <div class="details">
+                        <p>10k</p>
+                        <p>1.1k</p>
+                        <p>9</p>
+                    </div>
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const darkModeIcon = document.querySelector(".bi-moon");
+            const lightModeIcon = document.querySelector(".bi-brightness-high");
+
+            const posts_list = document.querySelector(".posts-list");
+
+            function enableLightMode() {
+                posts_list.classList.remove("dark")
+            }
+
+            function enableDarkMode() {
+                posts_list.classList.add("dark")
+            }
+            lightModeIcon.parentElement.addEventListener("click", enableLightMode);
+            darkModeIcon.parentElement.addEventListener("click", enableDarkMode);
+        });
+    </script>
+{% endblock content %}

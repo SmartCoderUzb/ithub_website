@@ -1,0 +1,254 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container{
+    width: 80%;
+    margin:50px auto;
+}
+
+body .header.dark{
+    position: sticky;
+    top:0;
+    background-color: rgba(27, 29, 43, 0.77);
+    border-bottom: 1px solid rgba(50, 60, 80, 1);
+}
+
+body {
+    position: relative;
+    font-family: Arial, sans-serif;
+    background-color: #fff;
+    text-align: center;
+    min-height:calc(100vh - 150px);
+    padding-bottom:1px;
+    overflow-x: hidden;
+}
+body.dark{
+    background-color: #1B1D2B;
+}
+body > .header {
+    background-color: rgba(255, 255, 255, 0.77);
+    display: flex;
+    position: sticky;
+    top:0;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: bold;
+    padding: 20px;
+    border-bottom: 1px solid rgba(150, 150, 150, 1);
+}
+
+body .header.dark .logo svg g{
+    fill:#fff;
+}
+
+body .header.dark .logo svg g{
+    fill:#fff;
+}
+
+.links-list{
+    display: flex;
+}
+
+.links-list .link-item{
+    width:150px;
+    list-style: none;
+}
+
+.links-list .link-item .link{
+    color:#333;
+    text-decoration: none;
+    padding:10px 20px;
+}
+
+.links-list.dark .link-item .link{
+    color:#fff;
+}
+
+body .header .login a{
+    color:#333;
+    border:1px solid #333;
+    text-decoration: none;
+    border-radius: 7px;
+    padding:10px 20px;
+}
+
+body .header.dark .login a{
+    border:1px solid #fff;
+    color:#fff;
+}
+
+.login{
+    display: flex;
+    align-items: center;
+    gap:10px;
+}
+
+.login button{
+    background-color: transparent;
+    border:none;
+}
+
+.footer {
+    display: flex;
+    position: absolute;
+    width:100%;
+    height:150px;
+    align-items: center;
+    padding: 20px;
+    margin-top: 20px;
+    bottom:-150px;
+}
+.footer.dark hr{
+    background-image: linear-gradient(to right, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0));
+}
+.footer hr{
+    top:0;
+    position: absolute;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    width: 95%;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
+}
+
+.footer .left{
+    width: 25%;
+}
+
+.footer.dark .left a{
+    color:#fff;
+}
+.footer .left a{
+    color:#333;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.footer .right{
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.footer-part p{
+    display: flex;
+    align-items: center;
+    height: 25px;
+    width: 250px;
+    justify-content:space-around;
+}
+
+.footer-part p a{
+    color:#333;
+    text-decoration: none;
+    display: inline-block;
+    width: 200px;
+    text-align: left;
+}
+
+.footer.dark .footer-part p a{
+    color:#fff;
+}
+
+.footer.dark .footer-part p svg{
+    fill:#fff;
+}
+
+.logo{
+    width: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* Mobile */
+.mobile.menu{
+    display: none;
+}
+@media (max-width: 768px) {
+    .body.dark{
+        color:#fff;
+    }
+    body .header .logo{
+        justify-content: left;
+    }
+    .mobile.menu{
+        fill:#fff;
+        display: block;
+    }
+    body .header.dark .menu svg{
+        fill:#fff;
+    }
+
+    .mobile.menu svg, .login button svg{
+        height: 46px;
+        width: 46px;
+    }
+
+    .login a{
+        display: none;
+    }
+    .links-list{
+        display: none;
+    }
+    .footer{
+        width: 100%;
+        flex-direction: column;
+    }
+    .footer .left, .footer .right{
+        width:100%;
+    }
+    .footer .right{
+        flex-direction: column;
+    }
+}
+
+
+.slide-links{
+    transform:translateX(100%);
+    transition: transform 1s;
+    height:100vh;
+    z-index: 999999;
+    background-color: #fff;
+    position: fixed;
+    top:0;
+    right:0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.slide-links a{
+    display: inline-block;
+    width:90%;
+    height:40px;
+    color:#333;
+    text-decoration: none;
+    font-size: 25px;
+}
+
+body.dark .slide-links a{
+    color:#fff;
+}
+
+body.dark .slide-links{
+    background-color: #1B1D2B;
+}
+
+.slide-links.open{
+    transform: translateX(0);
+}
+
+.slide-links .close{
+    height:150px;
+    font-size: 30px;
+    position: absolute;
+    left:20px;
+    top:20px;
+}
