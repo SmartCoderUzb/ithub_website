@@ -94,7 +94,7 @@
                     <a class="link" href="/blog">Blog</a>
                 </li>
                 <li class="link-item">
-                    <a class="link" href="/courses/">Kurslar</a>
+                    <a class="link" href="#">Kurslar</a>
                 </li>
             </ul>
         </div>
@@ -114,7 +114,6 @@
                 <!-- <a href="{% url 'logout' %}">chiqish</a> -->
             {% else %}
                 <a href="{% url 'login' %}">Hisobga kirish</a>
-                <a href="/signup">Ro'yhatdan o'tish</a>
             {% endif %}
             <div class="mobile menu">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
@@ -129,7 +128,7 @@
           </svg>
         </div>
         <a href="/">Bosh sahifa</a>
-        <a href="/courses/">Kurslarimiz</a>
+        <a href="#">Kurslarimiz</a>
         <a href="/blog/">Blog</a>
         {% if user.is_authenticated %}
             <a href="{% url 'profile' %}">Profile</a>
@@ -237,6 +236,9 @@
                 close_left_menu.classList.remove("enable")
             })
         });
+        document.querySelector(".logo svg").addEventListener('click', () => {
+            window.location.href = '/'
+        })
     </script>
 </body>
 </html>
