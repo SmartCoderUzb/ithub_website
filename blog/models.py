@@ -7,3 +7,4 @@ class Post(models.Model):
     summary = models.CharField(max_length=300)
     image = models.ImageField(upload_to="post_images/")
     body = RichTextField()
+    visitors = models.IntegerField(default=0)
